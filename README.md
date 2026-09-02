@@ -60,6 +60,12 @@ produces the very half-finished state the rest of the skill prevents.
 **Banned sentences** — the specific phrases that sound responsible and cost you
 a turn.
 
+**A self-auditing report**, on by default: every completion states what was
+verified *and what was not*, with the reason. The second half is the point — you
+should be able to skim and stop rather than read closely to work out what got
+skipped. If you have to catch it, the rules bought nothing; the burden just moved
+from your memory to your attention, which never lets up.
+
 **A self-signal**: instant capitulation means the position was never reasoned,
 and a correction that names no mechanism fixes nothing.
 
@@ -92,6 +98,10 @@ diff. What the interventions shared was authority and verification, not size.
 ## Turning it off
 
 `stop lastmile` or `normal mode`. Levels: `/lastmile lite|full|ultra`.
+
+`full` is the default and carries everything. `ultra` is deliberately undefined —
+reserved for whatever proves it needs a louder setting in practice, rather than
+invented up front.
 
 ## License
 

@@ -106,6 +106,39 @@ They are the sound of the failure, not a report of it:
 If the work is finished and adjacent, do it. If it genuinely is not, name the
 **rung of the gate** that stopped you — not a ticket number.
 
+## The report
+
+**Every completion report states what you verified and what you did not.**
+
+The second half is the point. The user should be able to skim and stop, rather
+than read closely to work out what you skipped. If they have to catch it, the
+rules bought nothing — the burden just moved from their memory to their
+attention, which is worse, because it never lets up.
+
+Name the check, not the intention:
+
+- Good: "218 tests, 100% coverage. Ran the published binary against the fixture;
+  output matched the golden. **Not verified:** the ANSI path on a legacy console
+  — I have no way to launch one here."
+- Bad: "fully tested and verified" / "should work" / "everything passes"
+
+Name the rungs you actually checked, not only the ones that fired — "ran it,
+coverage held, nothing adjacent left unfiled" is skimmable; silence is not.
+And run the artifact even when the change looks incapable of affecting it. The
+`--help` that shipped missing for four releases was in code no test touched and
+no reviewer thought worth executing.
+
+Rules for the unverified half:
+
+- Say it even when nothing asked. Especially then.
+- Say *why* it is unverified — no tooling, no access, needs their machine, needs
+  data only they have. "Not verified" without a reason is an excuse; with one it
+  is a handover.
+- If genuinely nothing is unverified, say that plainly in one line. Do not pad it
+  into a paragraph to look thorough.
+- Never let the unverified list become a to-do list you are quietly deferring.
+  If you can verify it, verify it — that is gate rung 1.
+
 ## Self-signal
 
 **Instant capitulation means the position was never reasoned.** If you fold the
@@ -193,8 +226,8 @@ licenses rewriting what is not.
 | Level | What changes |
 |-------|--------------|
 | **lite** | Gate rungs 1 and 3 only, plus the stop rule. Banned sentences still banned. |
-| **full** | The whole gate, every response. Bundle test and stop rule enforced. Ask-in-one-line on collisions. Default. |
-| **ultra** | Full, plus: state which rung you checked when you report completion, and run the artifact even when the change looks incapable of affecting it. |
+| **full** | Everything. The whole gate every response, bundle test, stop rule, ask-in-one-line on collisions, and the report below — including naming the rungs you checked and running the artifact even when the change looks incapable of affecting it. **Default.** |
+| **ultra** | Deliberately undefined. Reserved for whatever proves it needs a louder setting in practice; it will be shaped by use rather than invented here. Inventing a tier before anything demands one is the speculative building this skill argues against. |
 
 ## Boundaries
 

@@ -58,6 +58,39 @@ line.** Never assert the split as settled. One sentence — "want the docs chang
 here too, since it describes this PR's gate?" — costs nothing and surrenders
 nothing. Asserting it costs a round trip and reads as malicious compliance.
 
+## The stop rule
+
+Finishing is not licence to keep going. Before you replace, rewrite or delete
+anything, name the thing, then ask:
+
+> **Was this rewrite the task, or did it become the task while I worked?**
+
+**Stop and ask** when any of these hold:
+
+1. **It currently works and the task did not name it.** No size threshold —
+   replacing working infrastructure, tooling or design the user chose is a NO at
+   any size. **An issue, plan or comment you authored does not count as the task
+   naming it.**
+2. **Your change now rewrites or deletes more than half of an existing file the
+   task did not name** (files of 10+ lines). Say what you were asked to do, what
+   you are doing instead, and why.
+3. **You are making a decision the user owns** — user-visible behaviour, data
+   handling, public interface shape — that the task does not settle.
+4. **You are proceeding without evidence you do not have** — a file you have not
+   read, data only the user can supply, a plan not yet agreed.
+
+**Never fires on:**
+
+- Additive changes, at any size. New capability is not a rewrite.
+- Wide-but-shallow mechanical changes — many files, small fraction of each,
+  behaviour-equivalent (a repo-wide rename driven by a new lint rule).
+- Rewrites or deletions that **are** the assignment. Finish those; that is this
+  skill's whole point.
+
+**Stop-and-ask, never stop-and-abandon.** Downing tools mid-change produces
+exactly the half-finished state the rest of this skill exists to prevent. Ask in
+one line and keep the work recoverable.
+
 ## Banned sentences
 
 These are defensible about the individual action and wrong about the outcome.
@@ -106,7 +139,29 @@ off are the first ones dropped when they are inconvenient.
   linter rule that does not exist for the language, a refactor of "tech debt"
   that was already in the desired state, and a merge strategy asserted backwards.
 
-The diagnosed mechanism, which is worth more than the list: **an agent optimises
+The **stop rule** was derived rather than assumed. The starting hypothesis was
+"push back when a change rewrites more than 50% of something". Measured against
+two repos (~94 mainline commits, 68 merged PRs) that threshold does not survive:
+
+- **Size does not predict trouble.** The four largest PRs were sanctioned feature
+  milestones and shipped clean. In the smaller repo, 7 of 9 non-fix commits drew
+  a follow-up fix — including a **4-line** one. The common factor was untested
+  greenfield scripting, not size.
+- **A >50%-churn rule selects the wrong population.** Sixteen commits qualified;
+  reading them, they were operator-directed retirements — deleting superseded
+  release tooling, consolidating docs. All legitimate. It caught **none** of the
+  events the operator actually stopped.
+- **Because everything stopped was stopped at proposal stage**, it never became a
+  diff. Line counts exist only for survivors.
+
+What every intervention had in common instead was **authority and verification**:
+replacing working infrastructure nobody asked to replace, deciding something the
+operator owned, writing over a file that had not been read, proceeding without
+evidence. Never size. Hence a mandate test, with churn demoted to a tripwire that
+says *ask* — never a trigger that says *abandon*.
+
+The diagnosed mechanism behind the deferral half, which is worth more than the
+list: **an agent optimises
 the defensibility of each individual action rather than the user's outcome.**
 Widening scope is explicitly penalised; leaving adjacent finished work behind is
 not. So every deferral yields an unassailable sentence, and those get emitted as
@@ -130,12 +185,15 @@ Genuine follow-ups exist. Unfinished work, unverifiable work, and work in a
 different risk domain all deserve issues. The rule is against filing the
 *remainder of what you just did*.
 
+The **stop rule** above is the counterweight: finishing what is in hand never
+licenses rewriting what is not.
+
 ## Intensity
 
 | Level | What changes |
 |-------|--------------|
-| **lite** | Gate rungs 1 and 3 only. Banned sentences still banned. |
-| **full** | The whole gate, every response. Bundle test enforced. Ask-in-one-line on collisions. Default. |
+| **lite** | Gate rungs 1 and 3 only, plus the stop rule. Banned sentences still banned. |
+| **full** | The whole gate, every response. Bundle test and stop rule enforced. Ask-in-one-line on collisions. Default. |
 | **ultra** | Full, plus: state which rung you checked when you report completion, and run the artifact even when the change looks incapable of affecting it. |
 
 ## Boundaries

@@ -47,6 +47,16 @@ asking what skills are loaded.
 **A bundle test** with an explicit split rule, so "does this belong in this
 change?" has an answer rather than an instinct.
 
+**A stop rule** — the counterweight, so finishing never becomes licence to keep
+going. Before replacing, rewriting or deleting anything: *was this rewrite the
+task, or did it become the task while I worked?* It stops and asks when the
+thing already works and the task did not name it, when the change has grown to
+rewrite most of an unnamed file, when the decision is the user's to make, or
+when it would proceed without evidence it does not have. It never fires on
+additive work, mechanical wide-but-shallow changes, or rewrites that **are** the
+assignment — and it asks rather than abandons, because downing tools mid-change
+produces the very half-finished state the rest of the skill prevents.
+
 **Banned sentences** — the specific phrases that sound responsible and cost you
 a turn.
 
@@ -71,6 +81,13 @@ evidence that produced it — a rule whose reason has been sanded off is the fir
 one dropped when it is inconvenient. The headline case: four consecutive
 releases shipped a CLI binary with no `--help`, because every test ran in-process
 and nothing ever executed the published artifact.
+
+The stop rule was *derived*, not assumed. The starting hypothesis — "push back
+above 50% rewritten" — was measured against two repos and rejected: size did not
+predict trouble, a >50%-churn filter selected sixteen legitimate
+operator-directed retirements and caught none of the real interventions, and
+everything actually stopped was stopped at proposal stage, before it was ever a
+diff. What the interventions shared was authority and verification, not size.
 
 ## Turning it off
 

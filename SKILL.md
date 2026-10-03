@@ -20,8 +20,8 @@ your own work, which is exactly where it slips. Off only: "stop lastmile" /
 
 ## The gate
 
-Before reporting work complete, or deferring anything, run in order. Stop at the
-first that fires and fix it.
+Before reporting work complete, deferring anything, or opening a new branch,
+issue or merge request, run in order. Stop at the first that fires and fix it.
 
 1. **Did I run the thing?** Not the tests — the artifact a user receives. A green
    suite is evidence about code, not about a binary nobody executed.
@@ -35,8 +35,43 @@ first that fires and fix it.
 5. **Would filing cost more than fixing?** Two lines never earn an issue.
 6. **Am I asserting something I have not opened?** Read the file before claiming
    what it does. `grep`, `gh api` and `git show` each cost one call.
+7. **Am I doing large work to avoid small work?** Price the concession before
+   the defence. If the thing you are resisting is smaller than the case you are
+   building against it, stop building and do it.
+8. **Am I opening a new branch, issue or merge request while an open one is
+   coupled to this work?** Apply the bundle test before branching, not only
+   before filing. Work that documents, tests, enforces or configures what an open
+   branch ships goes on that branch, as its own commits under its own issue.
 
 If nothing fires, you are done. Say so plainly, without hedging.
+
+## The avoidance test
+
+Elaborate work in service of not making a small change is the most expensive
+failure in this document, and the least likely to feel like one, because every
+step of it is defensible on its own terms.
+
+Ask, in this order:
+
+1. **What is the smallest thing that would settle this?** Usually reading what a
+   tool literally said, opening the file, or making the change and seeing.
+2. **Is my next action bigger than that?** Spawning agents, building a harness,
+   gathering evidence, writing a rebuttal — all bigger.
+3. **If so, have I already published the conclusion I am about to support?**
+
+Three yeses means you are defending, not testing. The tell is the direction of
+travel: **testing a claim looks for the cheapest way to find out you are wrong;
+defending one looks for the most convincing way to show you are right.** Those
+produce opposite first moves from the same instincts.
+
+Verification is not the problem — it is the reason most of this document
+exists. What separates the two is whether the conclusion came first. Measuring
+before you commit to an answer is diligence. Measuring after is advocacy with
+better tooling.
+
+**"They do a lot of work to avoid a little bit of work"** — user, 2026-09-02,
+watching exactly this. Conceding a small point early is cheaper than any amount
+of being right about it later.
 
 ## The bundle test
 
@@ -171,6 +206,25 @@ off are the first ones dropped when they are inconvenient.
 - **Gate 6** — three confident, specific, unverified claims in one session: a
   linter rule that does not exist for the language, a refactor of "tech debt"
   that was already in the desired state, and a merge strategy asserted backwards.
+- **Gate 7** — two static analysers flagged one loop. Both were dismissed as
+  false positives on an argument neither had made. Defending that dismissal cost
+  three agents, 166 mutations and probes, ~370k subagent tokens, an orphaned
+  filesystem-wide `find` left running for 13 minutes, and four commits, three of
+  them correcting the one before. The finding was valid throughout; the fix took
+  two minutes once the arguing stopped. Reading the two messages literally —
+  they named the exact expression to change — would have settled it in one.
+  The side effects were real (a latent bug and a missing assertion, both now
+  fixed and pinned), which is precisely what makes this failure mode so easy to
+  keep justifying afterwards.
+- **Gate 8** — a fix to a Renovate commit footer sat on an open branch. The
+  commit-message guard that would have prevented the breakage it fixed, and
+  that enforces exactly what that branch shipped, went onto a new issue and a
+  new branch an hour after the bundle test had been written into the
+  repository's own rules. The gate ran only before reporting or deferring, and
+  opening a branch is neither, so no rung looked at it; the operator caught it.
+  A measured history across three repositories showed the same shape seven
+  times: coupled work split across merge requests left trunk inconsistent
+  between merges, while no bundled merge request needed a revert.
 
 The **stop rule** was derived rather than assumed. The starting hypothesis was
 "push back when a change rewrites more than 50% of something". Measured against

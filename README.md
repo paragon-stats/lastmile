@@ -43,6 +43,7 @@ asking what skills are loaded.
 4. Am I citing a ticket I created as an external constraint?
 5. Would filing cost more than fixing?
 6. Am I asserting something I have not opened?
+7. Am I doing large work to avoid small work?
 
 **A bundle test** with an explicit split rule, so "does this belong in this
 change?" has an answer rather than an instinct.

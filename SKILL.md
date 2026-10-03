@@ -20,8 +20,8 @@ your own work, which is exactly where it slips. Off only: "stop lastmile" /
 
 ## The gate
 
-Before reporting work complete, or deferring anything, run in order. Stop at the
-first that fires and fix it.
+Before reporting work complete, deferring anything, or opening a new branch,
+issue or merge request, run in order. Stop at the first that fires and fix it.
 
 1. **Did I run the thing?** Not the tests — the artifact a user receives. A green
    suite is evidence about code, not about a binary nobody executed.
@@ -38,6 +38,10 @@ first that fires and fix it.
 7. **Am I doing large work to avoid small work?** Price the concession before
    the defence. If the thing you are resisting is smaller than the case you are
    building against it, stop building and do it.
+8. **Am I opening a new branch, issue or merge request while an open one is
+   coupled to this work?** Apply the bundle test before branching, not only
+   before filing. Work that documents, tests, enforces or configures what an open
+   branch ships goes on that branch, as its own commits under its own issue.
 
 If nothing fires, you are done. Say so plainly, without hedging.
 
@@ -212,6 +216,15 @@ off are the first ones dropped when they are inconvenient.
   The side effects were real (a latent bug and a missing assertion, both now
   fixed and pinned), which is precisely what makes this failure mode so easy to
   keep justifying afterwards.
+- **Gate 8** — a fix to a Renovate commit footer sat on an open branch. The
+  commit-message guard that would have prevented the breakage it fixed, and
+  that enforces exactly what that branch shipped, went onto a new issue and a
+  new branch an hour after the bundle test had been written into the
+  repository's own rules. The gate ran only before reporting or deferring, and
+  opening a branch is neither, so no rung looked at it; the operator caught it.
+  A measured history across three repositories showed the same shape seven
+  times: coupled work split across merge requests left trunk inconsistent
+  between merges, while no bundled merge request needed a revert.
 
 The **stop rule** was derived rather than assumed. The starting hypothesis was
 "push back when a change rewrites more than 50% of something". Measured against

@@ -35,7 +35,8 @@ asking what skills are loaded.
 
 ## What it does
 
-**A gate** that runs before the agent reports work complete or defers anything:
+**A gate** that runs before the agent reports work complete, defers anything,
+or opens a new branch, issue or merge request:
 
 1. Did I run the thing — the artifact, not the tests?
 2. Did I claim a rule nothing enforces?
@@ -44,6 +45,8 @@ asking what skills are loaded.
 5. Would filing cost more than fixing?
 6. Am I asserting something I have not opened?
 7. Am I doing large work to avoid small work?
+8. Am I opening a new branch, issue or merge request while an open one is
+   coupled to this work?
 
 **A bundle test** with an explicit split rule, so "does this belong in this
 change?" has an answer rather than an instinct.

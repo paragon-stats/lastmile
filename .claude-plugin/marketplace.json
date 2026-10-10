@@ -1,0 +1,23 @@
+{
+  "name": "lastmile",
+  "owner": {
+    "name": "Pete Kloehn"
+  },
+  "description": "Single-plugin marketplace publishing lastmile: a behavioural harness that stops an agent deferring the last mile of work.",
+  "plugins": [
+    {
+      "name": "lastmile",
+      "source": "./",
+      "description": "The last mile is the work. A gate that runs before reporting completion, deferring anything, or opening a branch, issue or merge request: did I run the artifact, did I claim a rule nothing enforces, am I filing adjacent finished work instead of doing it. Composes with blastradius (how much process) and ponytail (how much to build).",
+      "category": "development",
+      "tags": [
+        "agent-skills",
+        "agentic-coding",
+        "completion",
+        "verification",
+        "scope-discipline",
+        "best-practices"
+      ]
+    }
+  ]
+}

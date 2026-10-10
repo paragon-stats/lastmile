@@ -26,7 +26,7 @@ binary nobody executed.
 ## Install
 
 ```sh
-claude plugin marketplace add paragon-stats/lastmile
+claude plugin marketplace add pkloehn1/lastmile
 claude plugin install lastmile@lastmile
 ```
 

@@ -26,12 +26,14 @@ binary nobody executed.
 ## Install
 
 ```sh
-git clone https://github.com/paragon-stats/lastmile
-cp -r lastmile ~/.claude/skills/lastmile
+claude plugin marketplace add paragon-stats/lastmile
+claude plugin install lastmile@lastmile
 ```
 
 Claude Code picks it up on the next session. Verify with `/lastmile` or by
-asking what skills are loaded.
+asking what skills are loaded. `claude plugin update lastmile@lastmile` moves it
+to the latest release — a copied directory has no such path, which is why this
+installs as a plugin.
 
 ## What it does
 

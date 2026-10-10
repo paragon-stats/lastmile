@@ -1,0 +1,19 @@
+{
+  "name": "lastmile",
+  "description": "Behavioural harness that stops an agent deferring the last mile: filing issues instead of finishing adjacent work, claiming rules nothing enforces, and reporting work complete without running the artifact. A seven-rung gate runs before any claim of completion, plus a bundle test for adjacent work and an avoidance test for large work done to dodge small work.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Pete Kloehn"
+  },
+  "homepage": "https://github.com/paragon-stats/lastmile",
+  "repository": "https://github.com/paragon-stats/lastmile",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "agentic-coding",
+    "completion",
+    "verification",
+    "scope-discipline",
+    "best-practices"
+  ]
+}
